@@ -34,33 +34,44 @@ public class Main {
                 MediaContent selectedMedia = mediaArray[choice - 1];
 
                 if (selectedMedia instanceof Video selectedVideo) {
-                    selectedVideo.play();
+                    boolean inVideo = true;
 
-                    System.out.println("To increase the volume press +, to decrease it press -");
-                    System.out.println("To increase the brightness press u, to decrease it press d");
-                    System.out.println("To exit press q");
+                    while (inVideo) {
+                        selectedVideo.play();
 
-                    boolean exitSettings = false;
+                        System.out.println("To increase the volume press +, to decrease it press -");
+                        System.out.println("To increase the brightness press u, to decrease it press d");
+                        System.out.println("Press q to return to selection");
 
-                    while (!exitSettings) {
+                        boolean exitSettings = false;
+
+                        while (!exitSettings) {
+                            String input = sc.nextLine();
+                            if (input.equals("+")) {
+                                selectedVideo.increaseVolume();
+                                selectedVideo.play();
+                            } else if (input.equals("-")) {
+                                selectedVideo.decreaseVolume();
+                                selectedVideo.play();
+                            } else if (input.equals("u")) {
+                                selectedVideo.increaseBrightness();
+                            } else if (input.equals("d")) {
+                                selectedVideo.decreaseBrightness();
+                            } else if (input.equals("q")) {
+                                exitSettings = true;
+                                System.out.println("Exiting settings...");
+                            } else {
+                                System.out.println("Invalid input. Try again :(");
+                            }
+                        }
+                        selectedVideo.play();
+                        System.out.println("Press q to go to main selection");
                         String input = sc.nextLine();
-                        if (input.equals("+")) {
-                            selectedVideo.increaseVolume();
-                            selectedVideo.play();
-                        } else if (input.equals("-")) {
-                            selectedVideo.decreaseVolume();
-                            selectedVideo.play();
-                        } else if (input.equals("u")) {
-                            selectedVideo.increaseBrightness();
-                        } else if (input.equals("d")) {
-                            selectedVideo.decreaseBrightness();
-                        } else if (input.equals("q")) {
-                            exitSettings = true;
-                            System.out.println("Exiting settings...");
-                        } else {
-                            System.out.println("Invalid input. Try again :(");
+                        if (input.equals("q")) {
+                            inVideo = false;
                         }
                     }
+
 
                 } else if (selectedMedia instanceof Audio selectedAudio) {
                     selectedAudio.play();

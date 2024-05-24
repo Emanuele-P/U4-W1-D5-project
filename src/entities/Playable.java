@@ -16,7 +16,7 @@ public abstract class Playable extends MediaContent {
 
     public void printDuration() {
         for (int i = 0; i < duration; i++) {
-            System.out.println(getTitle() + displayVolume());
+            System.out.println(getTitle() + " " + displayVolume());
         }
     }
 
