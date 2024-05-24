@@ -43,21 +43,31 @@ public class Video extends Playable implements Volume, Brightness {
 
 
     @Override
-    public void increaseBrithness() {
+    public void increaseBrightness() {
         if (brightness < 10) {
             brightness++;
+            displayBrightness();
         } else {
             System.out.println("Brightness is at max level");
         }
     }
 
     @Override
-    public void decreaseBrithness() {
+    public void decreaseBrightness() {
         if (brightness > 0) {
             brightness--;
+            displayBrightness();
         } else {
             System.out.println("Brightness is at min level");
         }
+    }
+
+    private void displayBrightness() {
+        String brightnessLevel = "Brightness: ";
+        for (int i = 0; i < brightness; i++) {
+            brightnessLevel += "*";
+        }
+        System.out.println(brightnessLevel);
     }
 
     //encapsulation

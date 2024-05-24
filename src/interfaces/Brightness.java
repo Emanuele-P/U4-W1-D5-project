@@ -2,7 +2,7 @@ package interfaces;
 
 public interface Brightness {
 
-    public void increaseBrithness();
+    public void increaseBrightness();
 
-    public void decreaseBrithness();
+    public void decreaseBrightness();
 }
