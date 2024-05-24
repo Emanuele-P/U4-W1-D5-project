@@ -18,4 +18,11 @@ public abstract class MediaContent {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    @Override
+    public String toString() {
+        return "MediaContent{" +
+                "title='" + title + '\'' +
+                '}';
+    }
 }
