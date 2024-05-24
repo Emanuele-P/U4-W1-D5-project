@@ -17,13 +17,15 @@ public class Audio extends Playable implements Volume {
     //methods
     @Override
     public void play() {
-        System.out.println("Playing audio: " + getTitle());
+        System.out.println("Playing audio: ");
+        printDuration();
     }
 
     @Override
     public void increaseVolume() {
         if (volume < 10) {
             volume++;
+            displayVolume();
         } else {
             System.out.println("Volume is at max level");
         }
@@ -33,9 +35,18 @@ public class Audio extends Playable implements Volume {
     public void decreaseVolume() {
         if (volume > 0) {
             volume--;
+            displayVolume();
         } else {
             System.out.println("Volume is at min level");
         }
+    }
+
+    public String displayVolume() {
+        String volumeLevel = "Volume: ";
+        for (int i = 0; i < volume; i++) {
+            volumeLevel += "!";
+        }
+        return volumeLevel;
     }
 
     //encapsulation

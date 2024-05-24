@@ -9,8 +9,8 @@ public class Main {
     public static void main(String[] args) {
 
         Video video = new Video("Top10 Java Betrayals.mkv", 10);
-        Audio audio1 = new Audio("Never Gonna Give You Up.mp3", 8);
-        Audio audio2 = new Audio("Sandstorm.m4a", 5);
+        Audio audio1 = new Audio("Never Gonna Give You Up.mp3", 7);
+        Audio audio2 = new Audio("Sandstorm.m4a", 3);
         Picture picture1 = new Picture("Array_methods_cheatsheet.jpg");
         Picture picture2 = new Picture("transparent.png");
 
@@ -36,27 +36,54 @@ public class Main {
                 if (selectedMedia instanceof Video selectedVideo) {
                     selectedVideo.play();
 
-                    System.out.println("To increase the brightness press u, to decrease it press d, to quit press q");
-                    boolean exitBrightness = false;
+                    System.out.println("To increase the volume press +, to decrease it press -");
+                    System.out.println("To increase the brightness press u, to decrease it press d");
+                    System.out.println("To exit press q");
 
-                    while (!exitBrightness) {
+                    boolean exitSettings = false;
+
+                    while (!exitSettings) {
                         String input = sc.nextLine();
-                        if (input.equals("u")) {
+                        if (input.equals("+")) {
+                            selectedVideo.increaseVolume();
                             selectedVideo.play();
+                        } else if (input.equals("-")) {
+                            selectedVideo.decreaseVolume();
+                            selectedVideo.play();
+                        } else if (input.equals("u")) {
                             selectedVideo.increaseBrightness();
                         } else if (input.equals("d")) {
                             selectedVideo.decreaseBrightness();
                         } else if (input.equals("q")) {
-                            exitBrightness = true;
-                            System.out.println("Exiting brightness selection...");
+                            exitSettings = true;
+                            System.out.println("Exiting settings...");
                         } else {
                             System.out.println("Invalid input. Try again :(");
                         }
                     }
 
-                } else if (selectedMedia instanceof Audio) {
-                    Audio selectedAudio = (Audio) selectedMedia;
+                } else if (selectedMedia instanceof Audio selectedAudio) {
                     selectedAudio.play();
+                    System.out.println("To increase the volume press +, to decrease it press -, to quit press q");
+
+                    boolean exitVolume = false;
+
+                    while (!exitVolume) {
+                        String input = sc.nextLine();
+                        if (input.equals("+")) {
+                            selectedAudio.increaseVolume();
+                            selectedAudio.play();
+                        } else if (input.equals("-")) {
+                            selectedAudio.decreaseVolume();
+                            selectedAudio.play();
+                        } else if (input.equals("q")) {
+                            exitVolume = true;
+                            System.out.println("Exiting volume selection...");
+                        } else {
+                            System.out.println("Invalid input. Try again :(");
+                        }
+                    }
+
                 } else if (selectedMedia instanceof Picture selectedPicture) {
                     selectedPicture.show();
 

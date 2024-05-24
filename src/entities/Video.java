@@ -20,7 +20,8 @@ public class Video extends Playable implements Volume, Brightness {
 
     @Override
     public void play() {
-        System.out.println("Playing video: " + getTitle());
+        System.out.println("Playing video: ");
+        printDuration();
     }
 
     @Override
@@ -41,6 +42,13 @@ public class Video extends Playable implements Volume, Brightness {
         }
     }
 
+    public String displayVolume() {
+        String volumeLevel = "Volume: ";
+        for (int i = 0; i < volume; i++) {
+            volumeLevel += "!";
+        }
+        return volumeLevel;
+    }
 
     @Override
     public void increaseBrightness() {
