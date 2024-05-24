@@ -10,6 +10,7 @@ public class Picture extends Openable implements Brightness {
     //constructor
     public Picture(String title) {
         super(title);
+        this.brightness = 5;
     }
 
     //methods
@@ -19,13 +20,21 @@ public class Picture extends Openable implements Brightness {
     }
 
     @Override
-    public void increaseBrithness(int valueUp) {
-
+    public void increaseBrithness() {
+        if (brightness < 10) {
+            brightness++;
+        } else {
+            System.out.println("Brightness is at max level");
+        }
     }
 
     @Override
-    public void decreaseBrithness(int valueDown) {
-
+    public void decreaseBrithness() {
+        if (brightness > 0) {
+            brightness--;
+        } else {
+            System.out.println("Brightness is at min level");
+        }
     }
 
     //encapsulation

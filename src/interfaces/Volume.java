@@ -1,7 +1,7 @@
 package interfaces;
 
 public interface Volume {
-    public void increaseVolume(int volUp);
+    public void increaseVolume();
 
-    public void decreaseVolume(int volDown);
+    public void decreaseVolume();
 }

@@ -11,6 +11,7 @@ public class Audio extends Playable implements Volume {
     //constructor
     public Audio(String title, int duration) {
         super(title, duration);
+        this.volume = 5;
     }
 
     //methods
@@ -20,13 +21,21 @@ public class Audio extends Playable implements Volume {
     }
 
     @Override
-    public void increaseVolume(int volUp) {
-
+    public void increaseVolume() {
+        if (volume < 10) {
+            volume++;
+        } else {
+            System.out.println("Volume is at max level");
+        }
     }
 
     @Override
-    public void decreaseVolume(int volDown) {
-
+    public void decreaseVolume() {
+        if (volume > 0) {
+            volume--;
+        } else {
+            System.out.println("Volume is at min level");
+        }
     }
 
     //encapsulation

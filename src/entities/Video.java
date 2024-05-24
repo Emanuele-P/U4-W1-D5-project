@@ -12,6 +12,8 @@ public class Video extends Playable implements Volume, Brightness {
     //constructor
     public Video(String title, int duration) {
         super(title, duration);
+        this.brightness = 5;
+        this.volume = 5;
     }
 
     //methods
@@ -22,24 +24,40 @@ public class Video extends Playable implements Volume, Brightness {
     }
 
     @Override
-    public void increaseVolume(int volUp) {
-
+    public void increaseVolume() {
+        if (volume < 10) {
+            volume++;
+        } else {
+            System.out.println("Volume is at max level");
+        }
     }
 
     @Override
-    public void decreaseVolume(int volDown) {
-
+    public void decreaseVolume() {
+        if (volume > 0) {
+            volume--;
+        } else {
+            System.out.println("Volume is at min level");
+        }
     }
 
 
     @Override
-    public void increaseBrithness(int valueUp) {
-
+    public void increaseBrithness() {
+        if (brightness < 10) {
+            brightness++;
+        } else {
+            System.out.println("Brightness is at max level");
+        }
     }
 
     @Override
-    public void decreaseBrithness(int valueDown) {
-
+    public void decreaseBrithness() {
+        if (brightness > 0) {
+            brightness--;
+        } else {
+            System.out.println("Brightness is at min level");
+        }
     }
 
     //encapsulation
